@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pandya DhvijKumar | Frontend Developer & Designer</title>
+  <meta name="description" content="Pandya DhvijKumar is a passionate frontend developer specializing in semantic HTML5, accessible web design, and modern UI/UX." />
+  <meta name="keywords" content="frontend developer, web designer, HTML5, CSS3, JavaScript, accessibility, WCAG, portfolio, Pandya DhvijKumar" />
+  <meta name="author" content="Pandya DhvijKumar" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://ck9081.github.io/Portfolio/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ck9081.github.io/Portfolio/" />
+  <meta property="og:title" content="Pandya DhvijKumar | Frontend Developer" />
+  <meta property="og:description" content="Crafting accessible, semantic, and beautiful web experiences." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pandya DhvijKumar | Frontend Developer" />
+  <meta name="twitter:description" content="Accessible, semantic web experiences crafted with care." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══════════════════════════════════════
+       CSS VARIABLES — Light / Dark Theme
+    ═══════════════════════════════════════ */
+    :root {
+      /* Light mode defaults */
+      --bg:          #f5f4f0;
+      --bg2:         #eceae4;
+      --surface:     #ffffff;
+      --border:      #e0ddd6;
+      --text:        #1a1814;
+      --muted:       #6b6860;
+      --accent:      #2563eb;
+      --accent-rgb:  37,99,235;
+      --accent2:     #16a34a;
+      --heading-font:'DM Serif Display', Georgia, serif;
+      --body-font:   'DM Sans', system-ui, sans-serif;
+      --radius:      14px;
+      --shadow:      0 4px 24px rgba(0,0,0,.08);
+      --shadow-lg:   0 12px 48px rgba(0,0,0,.12);
+      --transition:  .25s ease;
+      --max-w:       1120px;
+    }
+
+    [data-theme="dark"] {
+      --bg:         #0d0d0f;
+      --bg2:        #141417;
+      --surface:    #1a1a1e;
+      --border:     #2a2a30;
+      --text:       #eeeef0;
+      --muted:      #888896;
+      --accent:     #60a5fa;
+      --accent-rgb: 96,165,250;
+      --accent2:    #4ade80;
+      --shadow:     0 4px 24px rgba(0,0,0,.4);
+      --shadow-lg:  0 12px 48px rgba(0,0,0,.6);
+    }
+
+    /* ═══════════════════════════════════════
+       RESET & BASE
+    ═══════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body-font);
+      line-height: 1.65;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    img { display: block; max-width: 100%; }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity var(--transition);
+    }
+    a:hover { opacity: .75; }
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute;
+      top: -100px; left: 1rem;
+      background: var(--accent);
+      color: #fff;
+      padding: .5rem 1rem;
+      border-radius: 0 0 var(--radius) var(--radius);
+      font-weight: 600;
+      z-index: 9999;
+      transition: top var(--transition);
+      text-decoration: none;
+    }
+    .skip-link:focus { top: 0; }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    /* ═══════════════════════════════════════
+       LAYOUT
+    ═══════════════════════════════════════ */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ═══════════════════════════════════════
+       HEADER
+    ═══════════════════════════════════════ */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.8);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+    [data-theme="dark"] header {
+      background: rgba(13,13,15,.85);
+    }
+
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: .9rem;
+      padding-bottom: .9rem;
+    }
+
+    .logo {
+      font-family: var(--heading-font);
+      font-size: 1.35rem;
+      color: var(--text);
+      font-weight: 400;
+    }
+    .logo span { color: var(--accent); }
+
+    nav[aria-label="Primary navigation"] ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    nav[aria-label="Primary navigation"] a {
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 500;
+      letter-spacing: .03em;
+      transition: color var(--transition);
+    }
+    nav[aria-label="Primary navigation"] a:hover,
+    nav[aria-label="Primary navigation"] a[aria-current="page"] {
+      color: var(--accent);
+      opacity: 1;
+    }
+
+    /* Theme Toggle Button */
+    .theme-toggle {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition), border var(--transition);
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover { background: var(--border); }
+    .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+
+    /* ═══════════════════════════════════════
+       HERO — CSS Grid layout
+    ═══════════════════════════════════════ */
+    #home {
+      padding: 6rem 0 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background grid pattern */
+    #home::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: .4;
+      pointer-events: none;
+    }
+
+    /* Radial fade over grid */
+    #home::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 60% 40%, transparent 30%, var(--bg) 80%);
+      pointer-events: none;
+    }
+
+    #home .container { position: relative; z-index: 1; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(var(--accent-rgb),.08);
+      border: 1px solid rgba(var(--accent-rgb),.2);
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .35rem .9rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow::before { content: '●'; font-size: .5rem; animation: blink 2s infinite; }
+    @keyframes blink { 0%,100%{opacity:1}50%{opacity:.25} }
+
+    h1 {
+      font-family: var(--heading-font);
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      line-height: 1.05;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+    h1 em { font-style: italic; color: var(--accent); }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1.6rem;
+      border-radius: var(--radius);
+      font-family: var(--body-font);
+      font-size: .95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform .15s, box-shadow .15s, opacity var(--transition);
+      border: none;
+      text-decoration: none;
+    }
+    .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .btn:hover { transform: translateY(-2px); opacity: 1; }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(var(--accent-rgb),.3);
+    }
+    .btn-primary:hover { box-shadow: 0 8px 32px rgba(var(--accent-rgb),.45); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Hero Card (right column) */
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero-avatar {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-card h2 {
+      font-family: var(--heading-font);
+      font-size: 1.4rem;
+      margin-bottom: .3rem;
+    }
+
+    .hero-card .role {
+      font-size: .85rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-box {
+      background: var(--bg2);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: var(--heading-font);
+      font-size: 1.8rem;
+      color: var(--text);
+      display: block;
+    }
+    .stat-label {
+      font-size: .72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    /* ═══════════════════════════════════════
+       SECTION SHARED
+    ═══════════════════════════════════════ */
+    section { padding: 5rem 0; }
+
+    .section-tag {
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .6rem;
+    }
+
+    h2 {
+      font-family: var(--heading-font);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .section-divider { border: none; border-top: 1px solid var(--border); }
+
+    /* ═══════════════════════════════════════
+       ABOUT — Flexbox
+    ═══════════════════════════════════════ */
+    #about { background: var(--bg2); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    .about-text p { color: var(--muted); margin-bottom: 1rem; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: .75rem;
+      margin-top: 1.5rem;
+    }
+
+    .skill-chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: .6rem .75rem;
+      text-align: center;
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .skill-chip:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .about-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .about-visual-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    .about-visual-card:first-child {
+      grid-column: span 2;
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+    }
+    .vc-icon { font-size: 2rem; }
+    .vc-label { font-size: .78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+    .vc-value { font-family: var(--heading-font); font-size: 1.2rem; }
+
+    /* ═══════════════════════════════════════
+       PROJECTS — CSS Grid
+    ═══════════════════════════════════════ */
+    #projects {
+      background: var(--bg);
+    }
+
+    .projects-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* Bento-style grid */
+    .projects-bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto;
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .project-card:hover {
+      border-color: rgba(var(--accent-rgb),.4);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Bento layout */
+    .project-card:nth-child(1) { grid-column: span 7; }
+    .project-card:nth-child(2) { grid-column: span 5; }
+    .project-card:nth-child(3) { grid-column: span 5; }
+    .project-card:nth-child(4) { grid-column: span 7; }
+
+    .card-thumb {
+      height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-thumb-1 { background: linear-gradient(135deg, #dbeafe, #eff6ff); }
+    .card-thumb-2 { background: linear-gradient(135deg, #dcfce7, #f0fdf4); }
+    .card-thumb-3 { background: linear-gradient(135deg, #fef3c7, #fffbeb); }
+    .card-thumb-4 { background: linear-gradient(135deg, #fce7f3, #fdf2f8); }
+
+    [data-theme="dark"] .card-thumb-1 { background: linear-gradient(135deg, #1e3a5f, #0f2040); }
+    [data-theme="dark"] .card-thumb-2 { background: linear-gradient(135deg, #14532d, #052e16); }
+    [data-theme="dark"] .card-thumb-3 { background: linear-gradient(135deg, #451a03, #27100a); }
+    [data-theme="dark"] .card-thumb-4 { background: linear-gradient(135deg, #500724, #2d0318); }
+
+    .card-body { padding: 1.5rem; }
+
+    .card-tags { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: .75rem; }
+    .tag {
+      font-size: .7rem; font-weight: 600;
+      letter-spacing: .04em; text-transform: uppercase;
+      color: var(--accent2);
+      background: rgba(var(--accent-rgb),.08);
+      border: 1px solid rgba(var(--accent-rgb),.15);
+      padding: .2rem .6rem;
+      border-radius: 999px;
+    }
+
+    h3 { font-family: var(--heading-font); font-size: 1.25rem; margin-bottom: .4rem; }
+
+    .card-desc { color: var(--muted); font-size: .9rem; margin-bottom: 1rem; line-height: 1.55; }
+
+    .card-link {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .85rem; font-weight: 600; color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════
+       CONTACT
+    ═══════════════════════════════════════ */
+    #contact { background: var(--bg2); }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+
+    .contact-info p { color: var(--muted); margin-bottom: 2rem; }
+
+    .contact-links { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .contact-links a {
+      display: flex; align-items: center; gap: .75rem;
+      color: var(--text); font-weight: 500;
+    }
+    .c-icon {
+      width: 44px; height: 44px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+      transition: border-color var(--transition);
+    }
+    .contact-links a:hover .c-icon { border-color: var(--accent); }
+
+    /* Form */
+    .contact-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: .45rem; margin-bottom: 1.2rem; }
+
+    label { font-size: .85rem; font-weight: 600; color: var(--text); }
+    label .req { color: var(--accent); margin-left: .15rem; }
+
+    input, textarea {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--body-font);
+      font-size: .95rem;
+      padding: .75rem 1rem;
+      border-radius: var(--radius);
+      width: 100%;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      -webkit-appearance: none;
+    }
+    input::placeholder, textarea::placeholder { color: var(--muted); }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(var(--accent-rgb),.15);
+    }
+    input[aria-invalid="true"], textarea[aria-invalid="true"] { border-color: #ef4444; }
+
+    .error-msg { font-size: .8rem; color: #ef4444; min-height: 1.1em; }
+
+    textarea { resize: vertical; min-height: 130px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-submit { width: 100%; justify-content: center; margin-top: 1.25rem; }
+
+    .form-success {
+      display: none; text-align: center; padding: 2.5rem;
+      color: var(--accent2);
+    }
+    .form-success .big { font-size: 3rem; }
+    .form-success h3 { font-family: var(--heading-font); font-size: 1.5rem; margin: .5rem 0; color: var(--text); }
+    .form-success p { color: var(--muted); font-size: .9rem; }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+    }
+    footer .container {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-copy { color: var(--muted); font-size: .85rem; }
+    nav[aria-label="Footer navigation"] ul { list-style: none; display: flex; gap: 1.5rem; }
+    nav[aria-label="Footer navigation"] a { color: var(--muted); font-size: .85rem; }
+    nav[aria-label="Footer navigation"] a:hover { color: var(--text); opacity: 1; }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE — Mobile First
+    ═══════════════════════════════════════ */
+
+    /* Mobile: < 480px */
+    @media (max-width: 479px) {
+      nav[aria-label="Primary navigation"] ul { display: none; }
+      h1 { font-size: 2.4rem; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-visual { display: none; }
+      .contact-wrap { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .projects-bento { grid-template-columns: 1fr; }
+      .project-card:nth-child(n) { grid-column: span 1; }
+    }
+
+    /* Tablet: 480px – 767px */
+    @media (min-width: 480px) and (max-width: 767px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-visual { grid-template-columns: 1fr 1fr; }
+      .contact-wrap { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .projects-bento { grid-template-columns: 1fr 1fr; }
+      .project-card:nth-child(n) { grid-column: span 1; }
+    }
+
+    /* Small Desktop: 768px – 1023px */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .hero-grid { grid-template-columns: 1fr 340px; }
+      .about-grid { grid-template-columns: 1fr 1fr; }
+      .projects-bento { grid-template-columns: repeat(2, 1fr); }
+      .project-card:nth-child(n) { grid-column: span 1; }
+    }
+
+    /* Large: 1024px+ — full layout */
+    @media (min-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr 420px; }
+      .about-grid { grid-template-columns: 1fr 1fr; }
+      .projects-bento { grid-template-columns: repeat(12, 1fr); }
+      .project-card:nth-child(1) { grid-column: span 7; }
+      .project-card:nth-child(2) { grid-column: span 5; }
+      .project-card:nth-child(3) { grid-column: span 5; }
+      .project-card:nth-child(4) { grid-column: span 7; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+
+    /* Scroll reveal */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity .6s ease, transform .6s ease;
+      }
+      .reveal.visible { opacity: 1; transform: none; }
+      .reveal-delay-1 { transition-delay: .1s; }
+      .reveal-delay-2 { transition-delay: .2s; }
+      .reveal-delay-3 { transition-delay: .3s; }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ══════════ HEADER ══════════ -->
+  <header role="banner">
+    <div class="container">
+      <a href="#home" class="logo" aria-label="Pandya DhvijKumar – Home">Dhvij<span>.</span></a>
+
+      <div class="nav-right">
+        <nav aria-label="Primary navigation">
+          <ul role="list">
+            <li><a href="#home" aria-current="page">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <button
+          class="theme-toggle"
+          id="theme-btn"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════ MAIN ══════════ -->
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section id="home" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="hero-grid">
+
+          <div class="hero-content">
+            <div class="hero-eyebrow" aria-label="Status: Available for work">Available for Work</div>
+            <h1 id="hero-heading">
+              Hi, I'm<br>
+              <em>DhvijKumar</em><br>
+              Pandya.
+            </h1>
+            <p class="hero-desc">
+              Frontend developer focused on semantic HTML5, WCAG-compliant design, and building
+              interfaces that work beautifully for everyone — regardless of ability or device.
+            </p>
+            <div class="btn-group" role="group" aria-label="Primary actions">
+              <a href="#projects" class="btn btn-primary">View Projects <span aria-hidden="true">→</span></a>
+              <a href="#contact" class="btn btn-outline">Get In Touch</a>
+            </div>
+          </div>
+
+          <!-- Right card -->
+          <aside class="hero-card reveal" aria-label="Quick profile summary">
+            <div class="hero-avatar" aria-hidden="true">👨‍💻</div>
+            <h2>Pandya DhvijKumar</h2>
+            <p class="role">Frontend Developer & Designer</p>
+            <a href="mailto:ckpandya2019@gmail.com" class="btn btn-outline" style="font-size:.85rem;padding:.6rem 1.2rem">
+              ✉️ ckpandya2019@gmail.com
+            </a>
+            <div class="hero-stats" role="list" aria-label="Experience highlights">
+              <div class="stat-box" role="listitem">
+                <span class="stat-num" aria-label="3 plus years">3+</span>
+                <span class="stat-label">Years Exp.</span>
+              </div>
+              <div class="stat-box" role="listitem">
+                <span class="stat-num" aria-label="20 plus projects">20+</span>
+                <span class="stat-label">Projects</span>
+              </div>
+              <div class="stat-box" role="listitem">
+                <span class="stat-num" aria-label="100 percent">100</span>
+                <span class="stat-label">Lighthouse</span>
+              </div>
+              <div class="stat-box" role="listitem">
+                <span class="stat-num" aria-label="WCAG AA">AA</span>
+                <span class="stat-label">WCAG</span>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" role="presentation" />
+
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <p class="section-tag" aria-hidden="true">About Me</p>
+        <h2 id="about-heading">Developer. Designer.<br>Accessibility Advocate.</h2>
+
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>I'm Pandya DhvijKumar, a frontend developer with a passion for building websites that are
+              not just visually compelling but genuinely accessible and inclusive. I believe the web should work for everyone.</p>
+            <p>My work centers on writing clean, semantic HTML5, implementing WCAG 2.1 AA guidelines,
+              and creating interfaces that score perfectly on Lighthouse accessibility audits.</p>
+            <p>When I'm not coding, I contribute to open-source accessibility tooling and enjoy exploring new CSS techniques.</p>
+
+            <div class="skills-grid" role="list" aria-label="Technical skills">
+              <div class="skill-chip" role="listitem">HTML5</div>
+              <div class="skill-chip" role="listitem">CSS3</div>
+              <div class="skill-chip" role="listitem">JavaScript</div>
+              <div class="skill-chip" role="listitem">WCAG 2.1</div>
+              <div class="skill-chip" role="listitem">ARIA</div>
+              <div class="skill-chip" role="listitem">Flexbox</div>
+              <div class="skill-chip" role="listitem">CSS Grid</div>
+              <div class="skill-chip" role="listitem">React</div>
+              <div class="skill-chip" role="listitem">Git</div>
+              <div class="skill-chip" role="listitem">Figma</div>
+            </div>
+          </div>
+
+          <div class="about-visual reveal reveal-delay-1" aria-hidden="true">
+            <div class="about-visual-card">
+              <span class="vc-icon">🎯</span>
+              <div>
+                <div class="vc-label">Focus</div>
+                <div class="vc-value">Accessible Web</div>
+              </div>
+            </div>
+            <div class="about-visual-card">
+              <span class="vc-icon">📍</span>
+              <div class="vc-label">Location</div>
+              <div class="vc-value">India</div>
+            </div>
+            <div class="about-visual-card">
+              <span class="vc-icon">💼</span>
+              <div class="vc-label">Status</div>
+              <div class="vc-value">Available</div>
+            </div>
+            <div class="about-visual-card">
+              <span class="vc-icon">⭐</span>
+              <div class="vc-label">Score</div>
+              <div class="vc-value">100 / 100</div>
+            </div>
+            <div class="about-visual-card">
+              <span class="vc-icon">🎓</span>
+              <div class="vc-label">Learning</div>
+              <div class="vc-value">Always</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" role="presentation" />
+
+    <!-- PROJECTS -->
+    <section id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="projects-header">
+          <div>
+            <p class="section-tag" aria-hidden="true">Portfolio</p>
+            <h2 id="projects-heading">Selected Work</h2>
+          </div>
+          <a href="#contact" class="btn btn-outline" aria-label="Inquire about custom work">Hire Me</a>
+        </div>
+
+        <div class="projects-bento">
+
+          <article class="project-card reveal" aria-labelledby="proj1-title">
+            <div class="card-thumb card-thumb-1" aria-hidden="true">🛒</div>
+            <div class="card-body">
+              <div class="card-tags" role="list">
+                <span class="tag" role="listitem">React</span>
+                <span class="tag" role="listitem">CSS Grid</span>
+                <span class="tag" role="listitem">Accessibility</span>
+              </div>
+              <h3 id="proj1-title">ShopEasy Storefront</h3>
+              <p class="card-desc">Fully accessible e-commerce UI with keyboard navigation, ARIA live regions for cart updates, and 100/100 Lighthouse score.</p>
+              <a href="#" class="card-link" aria-label="View ShopEasy Storefront project">View Project <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="project-card reveal reveal-delay-1" aria-labelledby="proj2-title">
+            <div class="card-thumb card-thumb-2" aria-hidden="true">📊</div>
+            <div class="card-body">
+              <div class="card-tags" role="list">
+                <span class="tag" role="listitem">HTML5</span>
+                <span class="tag" role="listitem">D3.js</span>
+                <span class="tag" role="listitem">Flexbox</span>
+              </div>
+              <h3 id="proj2-title">DataViz Dashboard</h3>
+              <p class="card-desc">Interactive data visualization with accessible SVG charts, ARIA descriptions, and full reduced-motion support.</p>
+              <a href="#" class="card-link" aria-label="View DataViz Dashboard project">View Project <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="project-card reveal reveal-delay-2" aria-labelledby="proj3-title">
+            <div class="card-thumb card-thumb-3" aria-hidden="true">📰</div>
+            <div class="card-body">
+              <div class="card-tags" role="list">
+                <span class="tag" role="listitem">HTML5</span>
+                <span class="tag" role="listitem">CSS Grid</span>
+                <span class="tag" role="listitem">SEO</span>
+              </div>
+              <h3 id="proj3-title">NewsHub Portal</h3>
+              <p class="card-desc">Semantic news portal using article, section, aside, and time elements for excellent SEO and screen reader support.</p>
+              <a href="#" class="card-link" aria-label="View NewsHub Portal project">View Project <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="project-card reveal reveal-delay-3" aria-labelledby="proj4-title">
+            <div class="card-thumb card-thumb-4" aria-hidden="true">🎨</div>
+            <div class="card-body">
+              <div class="card-tags" role="list">
+                <span class="tag" role="listitem">CSS3</span>
+                <span class="tag" role="listitem">Animations</span>
+                <span class="tag" role="listitem">Dark Mode</span>
+              </div>
+              <h3 id="proj4-title">Design System</h3>
+              <p class="card-desc">Component library with CSS variables for light/dark theming, custom animations, and full WCAG AA compliance.</p>
+              <a href="#" class="card-link" aria-label="View Design System project">View Project <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" role="presentation" />
+
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <p class="section-tag" aria-hidden="true">Get In Touch</p>
+        <h2 id="contact-heading">Let's Work Together</h2>
+
+        <div class="contact-wrap">
+          <aside aria-label="Contact information">
+            <p>Open to freelance projects, full-time roles, and collaboration on accessibility-focused initiatives. Drop me a message!</p>
+            <ul class="contact-links" role="list">
+              <li>
+                <a href="mailto:ckpandya2019@gmail.com" aria-label="Email ckpandya2019@gmail.com">
+                  <span class="c-icon" aria-hidden="true">✉️</span>
+                  ckpandya2019@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/ck9081" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile (opens in new tab)">
+                  <span class="c-icon" aria-hidden="true">🐙</span>
+                  github.com/ck9081
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/dhvij-daxaykumar-pandya-a14259380" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in new tab)">
+                  <span class="c-icon" aria-hidden="true">💼</span>
+                  LinkedIn Profile
+                </a>
+              </li>
+            </ul>
+          </aside>
+
+          <div>
+            <div id="form-success" class="form-success" role="alert" aria-live="polite" aria-atomic="true">
+              <p class="big" aria-hidden="true">✅</p>
+              <h3>Message Sent!</h3>
+              <p>Thanks for reaching out. I'll get back to you within 1–2 business days.</p>
+            </div>
+
+            <form id="contact-form" class="contact-form" novalidate aria-labelledby="contact-heading">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="first-name">First Name<span class="req" aria-hidden="true">*</span></label>
+                  <input type="text" id="first-name" name="first-name" autocomplete="given-name"
+                    required aria-required="true" aria-describedby="first-name-error" placeholder="Pandya" />
+                  <span id="first-name-error" class="error-msg" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                  <label for="last-name">Last Name<span class="req" aria-hidden="true">*</span></label>
+                  <input type="text" id="last-name" name="last-name" autocomplete="family-name"
+                    required aria-required="true" aria-describedby="last-name-error" placeholder="DhvijKumar" />
+                  <span id="last-name-error" class="error-msg" role="alert" aria-live="polite"></span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address<span class="req" aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" autocomplete="email"
+                  required aria-required="true" aria-describedby="email-error" placeholder="you@example.com" />
+                <span id="email-error" class="error-msg" role="alert" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="Project Inquiry..." />
+              </div>
+              <div class="form-group">
+                <label for="message">Message<span class="req" aria-hidden="true">*</span></label>
+                <textarea id="message" name="message" required aria-required="true"
+                  aria-describedby="message-error" placeholder="Tell me about your project..."></textarea>
+                <span id="message-error" class="error-msg" role="alert" aria-live="polite"></span>
+              </div>
+              <button type="submit" class="btn btn-primary form-submit">
+                Send Message <span aria-hidden="true">→</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer role="contentinfo">
+    <div class="container">
+      <p class="footer-copy">
+        <small>© <time datetime="2026">2026</time> Pandya DhvijKumar. Built with semantic HTML5 &amp; CSS3.</small>
+      </p>
+      <nav aria-label="Footer navigation">
+        <ul role="list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    /* ── Dark / Light Theme Toggle ── */
+    const btn = document.getElementById('theme-btn');
+    const root = document.documentElement;
+
+    // Check saved preference
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') { root.setAttribute('data-theme','dark'); btn.textContent='☀️'; btn.setAttribute('aria-pressed','true'); }
+
+    btn.addEventListener('click', () => {
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        root.removeAttribute('data-theme');
+        btn.textContent = '🌙';
+        btn.setAttribute('aria-pressed','false');
+        localStorage.setItem('theme','light');
+      } else {
+        root.setAttribute('data-theme','dark');
+        btn.textContent = '☀️';
+        btn.setAttribute('aria-pressed','true');
+        localStorage.setItem('theme','dark');
+      }
+    });
+
+    /* ── Scroll Reveal ── */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    /* ── Active Nav ── */
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav[aria-label="Primary navigation"] a');
+    const navObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) navLinks.forEach(l => l.setAttribute('aria-current', l.getAttribute('href') === '#'+e.target.id ? 'page' : 'false'));
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => navObs.observe(s));
+
+    /* ── Form Validation ── */
+    const form = document.getElementById('contact-form');
+    const success = document.getElementById('form-success');
+
+    function setError(inputId, errId, msg) {
+      const el = document.getElementById(inputId);
+      el.setAttribute('aria-invalid', 'true');
+      document.getElementById(errId).textContent = msg;
+    }
+    function clearError(inputId, errId) {
+      const el = document.getElementById(inputId);
+      el.setAttribute('aria-invalid', 'false');
+      document.getElementById(errId).textContent = '';
+    }
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      let valid = true;
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!document.getElementById('first-name').value.trim()) { setError('first-name','first-name-error','Please enter your first name.'); valid=false; } else clearError('first-name','first-name-error');
+      if (!document.getElementById('last-name').value.trim())  { setError('last-name','last-name-error','Please enter your last name.'); valid=false; }  else clearError('last-name','last-name-error');
+      if (!emailRe.test(document.getElementById('email').value.trim())) { setError('email','email-error','Please enter a valid email.'); valid=false; } else clearError('email','email-error');
+      if (!document.getElementById('message').value.trim()) { setError('message','message-error','Please enter your message.'); valid=false; } else clearError('message','message-error');
+
+      if (valid) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+        success.focus();
+      } else {
+        const first = form.querySelector('[aria-invalid="true"]');
+        if (first) first.focus();
+      }
+    });
+
+    ['first-name','last-name','message'].forEach(id => {
+      document.getElementById(id).addEventListener('blur', function() {
+        if (!this.value.trim()) setError(id, id+'-error', 'This field is required.');
+        else clearError(id, id+'-error');
+      });
+    });
+    document.getElementById('email').addEventListener('blur', function() {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!re.test(this.value.trim())) setError('email','email-error','Please enter a valid email.');
+      else clearError('email','email-error');
+    });
+  </script>
+</body>
+</html>
